@@ -1,0 +1,212 @@
+body {
+    background-color: #aec3b0;
+    font-family: Arial, sans-serif;
+    }
+
+    .error {
+        color: #d9534f;
+        background-color: #ffdfdf;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+
+    }
+
+    .success {
+        color: #33933d;
+        background-color: #bdf1bd;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+
+    }
+
+/* forms */
+    .page-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    align-items: center;      /* centers vertically */
+    background-color: #aec3b0;
+    font-family: Arial, sans-serif;
+    }
+
+
+    .insertEmployeeDetailContainer, .loginpage-container {
+     
+        background: #acb6ad;
+        padding: 30px 40px;
+        border-radius: 5px;
+        box-shadow: 0 4px 2px;
+        width: 20%;
+        max-width: 500px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="date"],
+    .form-group input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #01161e;
+        border-radius: 5px;
+        background-color: transparent;
+
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .radio-option input[type="radio"] {
+    transform: scale(1.3);
+    accent-color: #124559; 
+}
+
+    .my-custom-button {
+        padding: 10px 20px;
+        background-color: #124559;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .my-custom-button:hover {
+        background-color: #093141;
+    }
+    .button-container {
+        text-align: center;
+    }
+
+    select {
+    padding: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: #3f4449;
+ 
+   }
+
+
+
+
+    /* leave tracking */
+
+    .leave-panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 20px;
+    }
+
+    .leave-panel {
+        
+        border: 1px solid #dee2e6; 
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 250px;
+        box-shadow: 1px 1px 1px 0.5px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .leave-panel:hover {
+        transform: scale(1.01);
+    }
+
+    .leave-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #124559;
+        margin-bottom: 0.5rem;
+    }
+
+    .leave-taken {
+        font-size: 1rem;
+        color: #2b4c59;
+    }
+
+
+/* insert application form */
+
+.leaveform {
+    /* background-color: #f8f9fa; Light background */
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 1px 1px 1px 1px;
+}
+
+.form-detail {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-detail label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+.form-detail input[type="date"],
+.form-detail select {
+    padding: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    font-size: 1rem;
+  background-color: transparent;
+    color: #3f4449;
+ 
+}
+
+
+/* Application history */
+            /* Status colors */
+        .status-pending { 
+            color: #FFC107; 
+            font-weight: bold; 
+        }
+        .status-approved { 
+            color: #28A745; 
+            font-weight: bold; 
+        }
+        .status-rejected { 
+            color: #963f48; 
+            font-weight: bold; 
+        }
+        
+
+        /* Table styling */
+        .table-info th {
+            background-color: #1d3851;
+            color: white;
+        }
+
+
+
+
+
