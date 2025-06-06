@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../asset/css/style.css">
-        <!-- <link rel="stylesheet" href="/emp_leave_app_tracking_ver1_copy/asset/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="/emp_leave_app_tracking_ver1_copy/asset/css/style.css"> -->
 
 
     <title>home</title>
@@ -58,13 +58,20 @@
 
                 <img src="../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill"> Leave Tracking Application</a>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
 
                         <a class="nav-link" href="auth/login_employee_page.php"><i class="bi bi-box-arrow-in-right"></i> login</a>
                     </li>
                     <li class="nav-item">
 
                         <a class="nav-link" href="auth/admin_login_form.php"><i class="bi bi-person-circle"></i> admin</a>
+                    </li> -->
+                    <!-- Change these links in your navbar -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth/login.php?type=employee"><i class="bi bi-box-arrow-in-right"></i> login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth/login.php?type=admin"><i class="bi bi-person-circle"></i> admin</a>
                     </li>
                 </ul>
             </div>
