@@ -40,13 +40,20 @@ class LeaveType extends ApiReq
         $data = ['empId' => $empId];
         $fetchLeaveTaken = $this->curl_call($data, "fetchLeaveTaken");
 
-        $LeaveTakenCount = $fetchLeaveTaken['msg'];
-        foreach ($LeaveTakenCount as $takenCount) {
-            $total_leave += $takenCount['leave_taken'];
+        if (isset($fetchLeaveTaken['msg']) && is_array($fetchLeaveTaken['msg'])) {
+
+            $LeaveTakenCount = $fetchLeaveTaken['msg'];
+
+            foreach ($LeaveTakenCount as $takenCount) {
+                $total_leave += $takenCount['leave_taken'];
+            }
+            $leave['leaveDetails'] = $LeaveTakenCount;
+            $leave['totalCount'] = $total_leave;
+        } else {
+
+            $leave['leaveDetails'] = [];
+            $leave['totalCount'] = 0;
         }
-        $leave['leaveDetails'] = $LeaveTakenCount;
-        $leave['totalCount'] = $total_leave;
-        
         return $leave;
     }
 }

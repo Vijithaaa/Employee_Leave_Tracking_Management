@@ -129,18 +129,38 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
 </head>
 
 <body>
+    <!-- class="d-flex align-items-center" -->
     <div class="container">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
-                <img src="../../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill"> Leave Approval</a>
+                <img src="../../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill"> Leave Approval </a>
+                <span class='me-3 text-primary'>Leave Approval</span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="../auth/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
                     </li>
                 </ul>
             </div>
+        </nav> -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="../../asset/images/infiniti_logo.png" alt="Logo" style="width: 50px;" class="rounded-pill me-3">
+                    <span class="text-light fs-4">Leave Approval</span>
+                </a>
+
+                <!-- <span class='me-3 text-primary ms-auto'>Leave Approval</span> -->
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../auth/logout.php">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <h1>leave approving page</h1>
+
 
         <div class="container py-4">
 

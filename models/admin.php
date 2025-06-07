@@ -38,13 +38,14 @@
         }
 
 
-        function InsertEmployeeData($empName,$empEmail,$empGender,$empDateOfJoin,$empRoleId){
+        function InsertEmployeeData($empName,$empEmail,$empGender,$empDateOfJoin,$empRoleId,$photoPath){
             $data = [
             'empName' => $empName,
             'empEmail' => $empEmail,
             'empGender' => $empGender,
             'empDateOfJoin' => $empDateOfJoin,
-            'empRoleId' => $empRoleId
+            'empRoleId' => $empRoleId,
+            'employee_phpto'=>$photoPath
         ];
         
         $InsertEmployeeData = $this->curl_call($data, "InsertEmployeeData");

@@ -73,19 +73,23 @@ class Server extends Database
         $empGender = $response['data']['empGender'];
         $empDateOfJoin = $response['data']['empDateOfJoin'];
         $empRoleId = $response['data']['empRoleId'];
+        $photoPath = $response['data']['employee_phpto'];
 
 
-        $stmt = $this->pdo->prepare("INSERT into employee_detail(employee_name,emp_email_id,gender,date_of_joining,role_id) 
-                                  values (:employee_name,:emp_email_id,:gender,:date_of_joining,:role_id)");
+        $stmt = $this->pdo->prepare("INSERT into employee_detail(employee_name,emp_email_id,gender,date_of_joining,role_id,employee_image) 
+                                  values (:employee_name,:emp_email_id,:gender,:date_of_joining,:role_id,:employee_image)");
         $stmt->bindParam(':employee_name', $empName);
         $stmt->bindParam(':emp_email_id', $empEmail);
         $stmt->bindParam(':gender', $empGender);
         $stmt->bindParam(':date_of_joining', $empDateOfJoin);
         $stmt->bindParam(':role_id', $empRoleId);
+        $stmt->bindParam(':employee_image', $photoPath);
+        
         // $stmt->execute();
         // echo "Hi";
         if ($stmt->execute()) {
-            return json_encode(['status' => 'success', 'msg' => true]);
+             $lastId = $this->pdo->lastInsertId();
+            return json_encode(['status' => 'success', 'msg' => [ 'employee_id' => $lastId] ]);
         } else {
             return json_encode(['status' => 'error', 'msg' => 'dberror']);
         }
@@ -96,8 +100,7 @@ class Server extends Database
 
         // echo "called";
 
-        $stmt = $this->pdo->prepare("SELECT employee_id, employee_name, role_id 
-                          FROM employee_detail 
+        $stmt = $this->pdo->prepare("SELECT *  FROM employee_detail 
                           WHERE employee_id = :employee_id 
                           AND employee_name = :employee_name");
         $stmt->bindParam(':employee_id', $response['data']['employee_id'], PDO::PARAM_INT);

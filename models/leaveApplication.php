@@ -27,9 +27,16 @@ class LeaveApplication extends ApiReq
         $data = ['empId' => $empId];
 
         $SelectApplication =  $this->curl_call($data, "SelectApplication");
-        $SelectApplication = $SelectApplication['msg'];
+        
+        if (!empty($SelectApplication) && is_array($SelectApplication) && isset($SelectApplication['msg']) && is_array($SelectApplication['msg'])) {
+            $SelectApplication = $SelectApplication['msg'];
+        } else {
+            $SelectApplication = [];
+        }
+        // $SelectApplication = $SelectApplication['msg'];
         return $SelectApplication;
     }
+
 
     public function deleteApplication($empId, $application_id)
     {
@@ -50,10 +57,11 @@ class LeaveApplication extends ApiReq
     }
 
 
-//approver page
+    //approver page
 
-    public function UpdateLeaveData($empId,$leave_type_id,$start_date,$end_date,$application_id){
-                $data = [
+    public function UpdateLeaveData($empId, $leave_type_id, $start_date, $end_date, $application_id)
+    {
+        $data = [
             'empId' => $empId,
             'leave_type_id' => $leave_type_id,
             'start_date' => $start_date,
@@ -61,50 +69,46 @@ class LeaveApplication extends ApiReq
             'appId' => $application_id
         ];
 
-        $UpdateLeaveData = $this->curl_call($data,"UpdateLeaveData");
+        $UpdateLeaveData = $this->curl_call($data, "UpdateLeaveData");
 
         return $UpdateLeaveData;
     }
 
 
 
-public function  SelectAllApplication(){
+    public function  SelectAllApplication()
+    {
 
-    $SelectAllApplication=$this->curl_call([],"SelectAllApplication");
+        $SelectAllApplication = $this->curl_call([], "SelectAllApplication");
 
-    return $SelectAllApplication;
-}
+        return $SelectAllApplication;
+    }
 
-public function Selecting_appIds($application_id){
+    public function Selecting_appIds($application_id)
+    {
 
-            $data = ['appId' => $application_id];
+        $data = ['appId' => $application_id];
 
-            $Selecting_appIds = $this->curl_call($data,"Selecting_appIds");
+        $Selecting_appIds = $this->curl_call($data, "Selecting_appIds");
 
-            return $Selecting_appIds['msg'];
+        return $Selecting_appIds['msg'];
+    }
 
-}
+    public function updateLeaveApp($status, $application_id)
+    {
+        $data = ['status' => $status, 'appId' => $application_id];
 
-    public function updateLeaveApp($status,$application_id){
-    $data = ['status' => $status, 'appId' => $application_id];
-
-        $updateLeaveApp = $this->curl_call($data,"updateLeaveApp");
+        $updateLeaveApp = $this->curl_call($data, "updateLeaveApp");
         return $updateLeaveApp;
     }
 
 
-    public function Insertdata_to_LeaveTrack($total_days,$leave_id,$emp_id){
-            $data = ['total_days' => $total_days, 'leave_id' => $leave_id, 'emp_id' => $emp_id];
+    public function Insertdata_to_LeaveTrack($total_days, $leave_id, $emp_id)
+    {
+        $data = ['total_days' => $total_days, 'leave_id' => $leave_id, 'emp_id' => $emp_id];
 
-            $Insertdata_to_LeaveTrack = $this->curl_call($data,"Insertdata_to_LeaveTrack");
+        $Insertdata_to_LeaveTrack = $this->curl_call($data, "Insertdata_to_LeaveTrack");
 
-            return $Insertdata_to_LeaveTrack;
-
+        return $Insertdata_to_LeaveTrack;
     }
-
-
-
-
-
-
 }

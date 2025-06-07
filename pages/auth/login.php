@@ -31,15 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['login'])) {
         require_once '../../models/employee.php';
         $auth = new Employee();
         $userData = $auth->empAuthenticate($username, $password);
+        // echo "<br>"; print_r($userData); echo "<br>";
+        // echo "<br>"; print_r($userData['msg']['employee_image']); echo "<br>";
         
         if ($userData && $userData['msg']['employee_name'] === $username && $userData['msg']['employee_id'] == $password) {
             $_SESSION['empId'] = $userData['msg']['employee_id'];
-            $_SESSION['empName'] = $userData['msg']['employee_name'];
+            $_SESSION['empName'] = ucfirst($userData['msg']['employee_name']);
             $_SESSION['role_id'] = $userData['msg']['role_id'];
             $_SESSION['emp_logged_in'] = true;
+
+                    // Store the photo path if it exists
+        if (!empty($userData['msg']['employee_image'])) {
+            $_SESSION['empImage'] = $userData['msg']['employee_image'];
+        } 
             header("Location: ../employee/leave_tracking_employee_page.php");
             exit;
-        } else {
+        } 
+        else {
             $errorMsg = "Invalid employee credentials";
         }
     }

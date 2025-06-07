@@ -22,7 +22,10 @@ session_start();
     <div class="container">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
-                <img src="../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill"> Admin</a>
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                     <img src="../asset/images/infiniti_logo.png" alt="Logo" style="width:50px;" class="rounded-pill me-3">
+                    <span class="text-light fs-4">Admin</span>
+                </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="admin/register_employee_details.php"><i class="bi bi-person-badge-fill"></i> Register</a>
@@ -39,7 +42,6 @@ session_start();
                 </ul>
             </div>
         </nav>
-        <h1>Admin Page</h1>
     </div>
 
 </body>

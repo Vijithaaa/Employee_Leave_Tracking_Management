@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../navbar.php';
+require_once '../functionfile.php';
 require_once '../../models/leaveApplication.php';
 require_once '../../models/leaveTypes.php';
 
@@ -14,6 +14,8 @@ if (!isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in'] !== true) {
 
 $empName = $_SESSION['empName'];
 $empId = $_SESSION['empId'];
+    $empImage = $_SESSION['empImage'];
+
 
 $leaveType = $leaveTypesobj->getAllLeaveTypes();
 
@@ -67,7 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && (isset($_POST['submit_form']) || is
             }
         }
     }
+
+    
+    
 }
+$navbarExtraContent = "<span class='me-3 text-primary'>" . ($application_id ? 'Edit Application' : 'Leave Application') . "</span>";
+// $navbarExtraContent = "<span class='me-3 text-primary'>" . 'leave Application' . "</span>";
+include '../navbar.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,8 +99,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && (isset($_POST['submit_form']) || is
             <div class="success"><?= $successMsg ?></div>
         <?php endif; ?>
 
-        <h1>Leave Application</h1>
-        <h2>Welcome <?= htmlspecialchars($empName) ?></h2>
 
         <div class="leaveform">
             <form method="post" onsubmit="return confirm('Are you sure you want to <?= $application_id ? 'update' : 'submit' ?> this leave application?');">
@@ -105,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && (isset($_POST['submit_form']) || is
                         <option value="">Select Leave Type</option>
                         <?php foreach ($leaveType['leaveIdName'] as $key => $value): ?>
                             <option value="<?= $key ?>" <?= ($leave_type_id == $key) ? 'selected' : '' ?>>
-                                <?= htmlspecialchars(str_replace(" ", "_", $value)) ?>
+                                <?= htmlspecialchars(ucwords(str_replace("_", " ", $value))) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

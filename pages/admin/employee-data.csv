@@ -1,0 +1,3 @@
+employee_id,employee_name,emp_email_id,gender,date_of_joining,status,role_id,employee_image
+10,pri,pri@gmail.com,female,2024-12-22,,4,asset/images/employees/emp_1.jpeg
+11,kavi,kavi@gmail.com,female,2025-06-07,active,4,asset/images/employees/emp_1.jpeg

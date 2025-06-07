@@ -1,8 +1,6 @@
 <?php
 session_start();
-include '../functionfile.php';
-include '../navbar.php';
-
+require_once '../functionfile.php';
 require_once '../../models/leaveApplication.php';
 require_once '../../models/leaveTypes.php';
 
@@ -13,8 +11,7 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
 
     $empName = $_SESSION['empName'];
     $empId = $_SESSION['empId'];
-    // print_r($empId);
-    // print_r($empName);
+    $empImage = $_SESSION['empImage'];
 
     $application = [];
     // $data = ['empId' => $empId];
@@ -56,8 +53,12 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
 
  
 
+$navbarExtraContent = "<span class='me-3 text-primary'>" . "Leave History" . "</span>";
+
 
 }
+include '../navbar.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -81,8 +82,7 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
     <div class="container">
 
         <div class="container py-4">
-            <h1 class="mb-4">Leave History</h1>
-            <h2 class="mb-4">Welcome <?= $empName ?></h2>
+
 
             <?php if (!empty($errorMsg)): ?>
                 <div class="error">
