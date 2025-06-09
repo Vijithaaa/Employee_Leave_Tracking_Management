@@ -7,14 +7,15 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
     $empImage = $_SESSION['empImage'];
 }
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark ">
   <div class="container-fluid">
+  
       <?= getEmployeeProfileHtml($empImage) ?>
+      <a class="navbar-brand text-dark"><h2><?=$empName?></h2></a>
 
-    <a class="navbar-brand"><h2><?=$empName?></h2></a>
 
 
-            <!-- Extra placeholder -->
+            <!-- Extra placeholder -->  
         <?php if (isset($navbarExtraContent)) : ?>
             <div class="d-flex align-items-center">
                 <?= $navbarExtraContent ?>
@@ -30,13 +31,13 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto"> <!-- Aligns to right -->
         <li class="nav-item">
-                    <a class="nav-link" href="leave_tracking_employee_page.php"><i class="bi bi-activity"></i> Leave Tracking</a>
+                    <a class="nav-link text-dark" href="leave_tracking_employee_page.php"><i class="bi bi-activity"></i> Leave Tracking</a>
         </li>
         <li class="nav-item">
-                    <a class="nav-link" href="leaveApplicationForm.php"><i class="bi bi-pencil-square"></i> Leave Application</a>
+                    <a class="nav-link text-dark" href="leaveApplicationForm.php"><i class="bi bi-pencil-square"></i> Leave Application</a>
         </li>
         <li class="nav-item">
-                    <a class="nav-link" href="leave_history.php"><i class="bi bi-chat-right-dots-fill"></i> Leave History</a>
+                    <a class="nav-link text-dark" href="leave_history.php"><i class="bi bi-chat-right-dots-fill"></i> Leave History</a>
         </li>
         <li class="nav-item">
                     <a class="nav-link text-danger" href="../auth/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
@@ -46,3 +47,4 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
     </div>
   </div>
 </nav>
+<div class="blank"></div>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../asset/css/style.css">
-    <!-- <link rel="stylesheet" href="/emp_leave_app_tracking_ver1_copy/asset/css/style.css"> -->
+    <link rel="stylesheet" href="../asset/css/home-index-page.css">
 
 
     <title>home</title>
@@ -27,7 +27,8 @@
 
         .card-header {
             font-weight: bold;
-            background-color: #0d1d35;
+            background-color: #123458;
+            
             color: white;
             border-radius: 10px 10px 0 0 !important;
         }
@@ -39,7 +40,7 @@
             font-weight: bold;
         }
 
-        h1 {
+        h4 {
             margin-bottom: 30px;
             text-align: center;
             color: #041a3c;
@@ -52,35 +53,40 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid">
 
-                <img src="../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill"> Leave Tracking Application</a>
-                <ul class="navbar-nav">
-                    <!-- <li class="nav-item">
 
-                        <a class="nav-link" href="auth/login_employee_page.php"><i class="bi bi-box-arrow-in-right"></i> login</a>
+    <!-- <nav class="navbar bg-body-tertiary custom-navbar"> -->
+    <nav class="navbar custom-navbar">
+        <!-- <nav class="nav-wrapper custom-navbar"> -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../asset/images/infiniti_logo.png" alt="Logo" style="width:80px;" class="rounded-pill me-3">
+            </a>
+            <span class="h3">Employee Leave Tracking Management</span>
+            <div class="d-flex">
+                <ul class="navbar-nav flex-row">
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="auth/login.php?type=employee">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="nav-link" href="auth/admin_login_form.php"><i class="bi bi-person-circle"></i> admin</a>
-                    </li> -->
-                    <!-- Change these links in your navbar -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="auth/login.php?type=employee"><i class="bi bi-box-arrow-in-right"></i> login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="auth/login.php?type=admin"><i class="bi bi-person-circle"></i> admin</a>
+                        <a class="nav-link" href="auth/login.php?type=admin">
+                            <i class="bi bi-person-circle"></i> Admin
+                        </a>
                     </li>
                 </ul>
             </div>
-        </nav>
-
+        </div>
+    </nav>
+    <div class="blank"></div>
+    <div class="container-index">
+        
         <div class="container-fluid mt-3">
-
+            
             <div class="container">
-                <h1>Employee Leave Benefits</h1>
+                <h4>Employee Leave Benefits</h4>
+                <hr>
 
                 <div class="row">
                     <!-- Maternity Leave Card -->
@@ -157,6 +163,143 @@
                             <div class="card-body">
                                 <p>Special leaves offered by some companies.</p>
                                 <p>Includes: <span class="highlight">Marriage leave</span> (3-14 days), <span class="highlight">Compensatory leave</span>, <span class="highlight">LOP leave</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Other Leaves Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Other Leaves
+                            </div>
+                            <div class="card-body">
+                                <p>Special leaves offered by some companies.</p>
+                                <p>Includes: <span class="highlight">Marriage leave</span> (3-14 days), <span class="highlight">Compensatory leave</span>, <span class="highlight">LOP leave</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div> <!-- Other Leaves Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Other Leaves
+                            </div>
+                            <div class="card-body">
+                                <p>Special leaves offered by some companies.</p>
+                                <p>Includes: <span class="highlight">Marriage leave</span> (3-14 days), <span class="highlight">Compensatory leave</span>, <span class="highlight">LOP leave</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div> <!-- Other Leaves Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Other Leaves
+                            </div>
+                            <div class="card-body">
+                                <p>Special leaves offered by some companies.</p>
+                                <p>Includes: <span class="highlight">Marriage leave</span> (3-14 days), <span class="highlight">Compensatory leave</span>, <span class="highlight">LOP leave</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
+                            </div>
+                        </div>
+                    </div> <!-- Sick Leave Card -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Sick Leave
+                            </div>
+                            <div class="card-body">
+                                <p>Leave for employees when unwell or injured.</p>
+                                <p>Total leave: <span class="highlight">12 days</span> per year (minimum)</p>
                             </div>
                         </div>
                     </div>

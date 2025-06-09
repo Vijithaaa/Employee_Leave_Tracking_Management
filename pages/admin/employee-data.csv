@@ -1,3 +1,5 @@
 employee_id,employee_name,emp_email_id,gender,date_of_joining,status,role_id,employee_image
-10,pri,pri@gmail.com,female,2024-12-22,,4,asset/images/employees/emp_1.jpeg
-11,kavi,kavi@gmail.com,female,2025-06-07,active,4,asset/images/employees/emp_1.jpeg
+
+1,viji,viji@gmail.com,female,2025-03-10,active,1,asset/images/employees/emp_1.jpeg
+2,john,john@gmail.com,male,2025-01-06,active,1,asset/images/employees/emp_2.jpeg
+3,priya,priya@gmail.com,female,2024-12-16,active,4,asset/images/employees/emp_3.jpeg
