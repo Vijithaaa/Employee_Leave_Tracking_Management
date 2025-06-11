@@ -47,4 +47,3 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
     </div>
   </div>
 </nav>
-<div class="blank"></div>

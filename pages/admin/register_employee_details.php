@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['register_employee_det
         // Create the file with header if it doesn't exist
         if (!file_exists($csvFilePath)) {
             $file = fopen($csvFilePath, 'w');
-            fputcsv($file, ['employee_id','employee_name','emp_email_id','gender','date_of_joining','status','role_id','employee_image']);
+            fputcsv($file, ['employee_id', 'employee_name', 'emp_email_id', 'gender', 'date_of_joining', 'status', 'role_id', 'employee_image']);
         } else {
             $file = fopen($csvFilePath, 'a'); // append mode
         }
@@ -78,13 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['register_employee_det
         if ($file) {
             // 🆔 Use DB ID or generate temp ID (if you don’t have it yet)
             $empId = $insert['msg']['employee_id']; // assumes you return ID from DB
-            $status='active'; //default
+            $status = 'active'; //default
 
-            fputcsv($file, [$empId,$empName,$empEmail,$empGender,$empDateOfJoin,$status,$empRoleId,$photoPath]);
+            fputcsv($file, [$empId, $empName, $empEmail, $empGender, $empDateOfJoin, $status, $empRoleId, $photoPath]);
 
             fclose($file);
         }
-
     }  //insert status = success
 
     else {
@@ -105,12 +104,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['register_employee_det
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../asset/css/style.css">
+    <link rel="stylesheet" href="../../asset/css/register.css">
+
 
     <title>Register Employee Details</title>
 </head>
 
 <body>
+    
     <div class="page-wrapper">
+        <div class="image"></div>
         <div class="insertEmployeeDetailContainer">
             <?php if (!empty($errorMsg)): ?>
                 <div class="error">
@@ -181,7 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['register_employee_det
 
                 </form>
             </div>
-        </div>
+    </div>
+
 </body>
 
 </html>

@@ -60,13 +60,22 @@ include '../navbar.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <link rel="stylesheet" href="../../asset/css/style.css"> -->
-    <link rel="stylesheet" href="../../asset/css/employee-navbar">
+    <link rel="stylesheet" href="../../asset/css/leavetrack.css">
+    <link rel="stylesheet" href="../../asset/css/employee-navbar.css">
 
+       <style>
+        .blank {
+            background-color: transparent;
+            height: 15vh;
+        }
+
+
+
+    </style>
 </head>
 
 <body>
-    
+    <div class="blank"></div>
     <div class="container">
         <?php if (!empty($errorMsg)): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($errorMsg) ?></div>
@@ -75,17 +84,17 @@ include '../navbar.php';
         <?php if (!empty($successMsg)): ?>
             <div class="alert alert-success"><?= htmlspecialchars($successMsg) ?></div>
         <?php endif; ?>
+        <h3><span>Total Leave:</span> <?= $userData['total_leave'] ?></h3>
 
         <div class="leave-panels">
             <?php foreach ($userData['fetchLeaveTaken'] as $leave): ?>
                 <div class="leave-panel">
-                    <div class="leave-name"><?= htmlspecialchars($leave['leave_type']) ?></div>
+                    <div class="leave-name"><?= htmlspecialchars(ucwords(str_replace('_',' ',$leave['leave_type']))) ?></div>
                     <div class="leave-taken">Taken: <?= $leave['leave_taken'] ?> days</div>
                 </div>
             <?php endforeach; ?>
         </div>
 
-        <h3><span>Total Leave:</span> <?= $userData['total_leave'] ?></h3>
     </div>
 
 </body>

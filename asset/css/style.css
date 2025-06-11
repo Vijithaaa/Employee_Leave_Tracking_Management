@@ -27,10 +27,8 @@
     z-index: 999;
 }
 
-.blank {
-    background-color: transparent;
-    height: 55px;
-}
+
+
 
 
 .error {
@@ -66,110 +64,3 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-/* leave tracking */
-
-.leave-panels {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin: 20px;
-}
-
-.leave-panel {
-
-    border: 1px solid #dee2e6;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    width: 250px;
-    box-shadow: 1px 1px 1px 0.5px;
-    transition: transform 0.2s ease-in-out;
-}
-
-.leave-panel:hover {
-    transform: scale(1.01);
-}
-
-.leave-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #124559;
-    margin-bottom: 0.5rem;
-}
-
-.leave-taken {
-    font-size: 1rem;
-    color: #2b4c59;
-}
-
-
-
-
-/* insert application form */
-
-.leaveform {
-    /* background-color: #f8f9fa; Light background */
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 2rem;
-    max-width: 500px;
-    margin: 40px auto;
-    box-shadow: 1px 1px 1px 1px;
-}
-
-.form-detail {
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-detail label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #343a40;
-}
-
-.form-detail input[type="date"],
-.form-detail select {
-    padding: 0.5rem;
-    border: 1px solid #000000;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: transparent;
-    color: #3f4449;
-
-}
-
-
-/* Application history */
-/* Status colors */
-.status-pending {
-    color: #FFC107;
-    font-weight: bold;
-}
-
-.status-approved {
-    color: #28A745;
-    font-weight: bold;
-}
-
-.status-rejected {
-    color: #963f48;
-    font-weight: bold;
-}
-
-
-/* Table styling */
-.table-info th {
-    background-color: #1d3851;
-    color: white;
-}

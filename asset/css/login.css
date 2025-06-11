@@ -93,7 +93,7 @@ body::before {
 
 .my-custom-button {
     padding: 10px 25px;
-    background-color: var(--title);
+    background-color: #005ec3;
     color:#fff;
     letter-spacing: 1px;
     border: none;
@@ -104,6 +104,6 @@ body::before {
 }
 
 .my-custom-button:hover {
-    background-color: var(--btn-color);
+    background-color: #003d7e;
 }
 

@@ -11,9 +11,7 @@ $employee = new Employee();
 $types = new LeaveType();
 $LeaveAppObj = new LeaveApplication();
 
-//leave types
-// $leaveType = $types->getAllLeaveTypes();
-// print_r($leaveType);
+
 
 
 
@@ -23,9 +21,9 @@ if (isset($_POST['actions']) && isset($_POST['application_id'])) {
     $status = ($_POST['actions']); //hidden input
 
     $updateLeaveApp = $LeaveAppObj->updateLeaveApp($status, $application_id);
-    // echo "<pre>";print_r($updateLeaveApp);echo "</pre>";
 
-    if ($updateLeaveApp) {
+
+      if ($updateLeaveApp) {
         $successMsg = "status updated";
     }
 
@@ -35,7 +33,6 @@ if (isset($_POST['actions']) && isset($_POST['application_id'])) {
     if ($status == 'approved') {
 
         $Selecting_appIds = $LeaveAppObj->Selecting_appIds($application_id);
-        // echo "<pre>";print_r($Selecting_appIds);echo "</pre>";
         $emp_id = $Selecting_appIds['employee_id'];
         $leave_id = $Selecting_appIds['leave_type_id'];
         $start_date = date_create($Selecting_appIds['leave_start_date']);
@@ -44,7 +41,6 @@ if (isset($_POST['actions']) && isset($_POST['application_id'])) {
         $total_days = $interval->days + 1;
 
         $Insertdata_to_LeaveTrack = $LeaveAppObj->Insertdata_to_LeaveTrack($total_days, $leave_id, $emp_id);
-        // echo "<pre>";print_r($Insertdata_to_LeaveTrack);echo "</pre>";
 
     } //status == approved
 
@@ -60,21 +56,17 @@ if (isset($_POST['actions']) && isset($_POST['application_id'])) {
 
 $application = [];
 // $SelectAllApplication = leaveapp_crul_opration([], "SelectAllApplication");
-// //  echo "<pre>"; print_r($SelectAllApplication); echo "</pre>";
 
 $SelectAllApplication = $LeaveAppObj->SelectAllApplication();
-//  echo "<pre>"; print_r($SelectAllApplication); echo "</pre>";
 
 if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
     $applications = $SelectAllApplication['msg'];
 
     $leaveType = $types->getAllLeaveTypes();
     $leaveIdName = $leaveType['leaveIdName'];
-    // echo "<pre>";print_r($leaveIdName);echo "</pre>";
 
     //         //employee name
     $selectEmployeeName = $employee->selectEmployeeName();
-    // echo "<pre>";print_r($selectEmployeeName);echo "</pre>";
 
 
     $leaveIdName = [];
@@ -86,7 +78,6 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
     foreach ($selectEmployeeName as $id => $name) {
         $EmpIdName[$id] = $name;
     }
-    // echo "<pre>";print_r($EmpIdName); echo "</pre>";
 
     foreach ($applications as $app) {
         $leaveTypeId = $app['leave_type_id'];
@@ -106,7 +97,6 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
             'days' => calculateLeaveDays($app['leave_start_date'], $app['leave_end_date']) // Calculate days here
 
         ];
-        // echo "<pre>";print_r($application);echo "</pre>";
     }
 }
 ?>
@@ -124,11 +114,20 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../../asset/css/style.css">
+    <link rel="stylesheet" href="../../asset/css/approver.css">
+
 
     <title>Leave History</title>
+    <style>
+        .blank {
+            background-color: transparent;
+            height: 20px;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="blank"></div>
     <nav class="navbar custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -184,7 +183,7 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
                         <?php foreach ($application as $app): ?>
                             <tr>
 
-                                <td><?= htmlspecialchars($app['employee_id']) ?></td>
+                                <td><?= htmlspecialchars(ucfirst($app['employee_id'])) ?></td>
 
                                 <td><?= htmlspecialchars($app['leave_type_id']) ?></td>
                                 <td><?= htmlspecialchars(formatDate($app['leave_start_date'])) ?></td>
@@ -204,14 +203,14 @@ if ($SelectAllApplication && $SelectAllApplication['status'] === 'success') {
                                         <form class="actions" method="post" style="display:inline;">
                                             <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
                                             <input type="hidden" name="actions" value="approved">
-                                            <button type="submit" class="btn btn-sm btn-outline-primary me-2">
+                                            <button type="submit" class="text-action approve">
                                                 <i class="bi bi-check2-square"></i> Approve
                                             </button>
                                         </form>
                                         <form class="actions" method="post" style="display:inline;">
                                             <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
                                             <input type="hidden" name="actions" value="rejected">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <button type="submit" class="text-action reject">
                                                 <i class="bi bi-trash3"></i> Reject
                                             </button>
                                         </form>

@@ -34,28 +34,25 @@ if (isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in']  == true) {
             $leaveTypeId = $app['leave_type_id'];
             $leaveTypeName = $leaveIdName[$leaveTypeId] ?? 'Unknown Leave Type';
 
-        $application[] = [
-        'application_id' => $app['application_id'],
-        'employee_id' => $app['employee_id'],
-        'leave_type_id' => $leaveTypeName,
-        'leave_start_date' => $app['leave_start_date'],
-        'leave_end_date' => $app['leave_end_date'],
-        'status' => $app['status'],
-        'reqested_date' => $app['reqested_date'],
-        'response_date' => $app['response_date'],
-        'days' => calculateLeaveDays($app['leave_start_date'], $app['leave_end_date']) // Calculate days here
-    
-    ];
-    // echo "<pre>";print_r($app);echo "</pre>";
-        }
+            $application[] = [
+                'application_id' => $app['application_id'],
+                'employee_id' => $app['employee_id'],
+                'leave_type_id' => $leaveTypeName,
+                'leave_start_date' => $app['leave_start_date'],
+                'leave_end_date' => $app['leave_end_date'],
+                'status' => $app['status'],
+                'reqested_date' => $app['reqested_date'],
+                'response_date' => $app['response_date'],
+                'days' => calculateLeaveDays($app['leave_start_date'], $app['leave_end_date']) // Calculate days here
 
+            ];
+            // echo "<pre>";print_r($app);echo "</pre>";
+        }
     }
 
- 
-
-$navbarExtraContent = "<span class='me-3 text-primary'>" . "Leave History" . "</span>";
 
 
+    $navbarExtraContent = "<span class='me-3 text-primary'>" . "Leave History" . "</span>";
 }
 include '../navbar.php';
 
@@ -74,86 +71,103 @@ include '../navbar.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../../asset/css/style.css">
-
+    <link rel="stylesheet" href="../../asset/css/leave-history.css">
     <title>Leave History</title>
+    <style>
+        .blank {
+            background-color: transparent;
+            height: 55px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="blank"></div>
+    <div class="container leave-history-wrapper py-4">
 
-        <div class="container py-4">
+        <div class="card leave-history-card mx-auto my-4">
+
+            <div class="card-body p-0">
 
 
-            <?php if (!empty($errorMsg)): ?>
-                <div class="error">
-                    <?= $errorMsg ?>
-                </div>
-            <?php endif; ?>
+                <?php if (!empty($errorMsg)): ?>
+                    <div class="error">
+                        <?= $errorMsg ?>
+                    </div>
+                <?php endif; ?>
 
-            <?php if (!empty($successMsg)): ?>
-                <div class="success">
-                    <?= $successMsg ?>
-                </div>
-            <?php endif; ?>
+                <?php if (!empty($successMsg)): ?>
+                    <div class="success">
+                        <?= $successMsg ?>
+                    </div>
+                <?php endif; ?>
 
-            <?php if (!empty($application)): ?>
-                <table class="table table">
-                    <thead class="table-info">
-                        <tr>
-                            <!-- <th>Application ID</th> -->
-                            <th>Leave Type</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Days</th>
-                            <th>Status</th>
-                            <th>Requested Date</th>
-                            <th>Response Date</th>
-                            <th>Action</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($application as $app): ?>
+                <?php if (!empty($application)): ?>
+                    <table class="table leave-history-table mb-0">
+                        <thead>
                             <tr>
-                                <td><?= htmlspecialchars($app['leave_type_id']) ?></td>
-                                <td><?= htmlspecialchars(formatDate($app['leave_start_date'])) ?></td>
-                                <td><?= htmlspecialchars(formatDate($app['leave_end_date'])) ?></td>
-                                <td class="days"><?= $app['days'] ?> day<?= $app['days'] != 1 ? 's' : '' ?></td>
-                                <td class="status-<?= $app['status'] ?>">
-                                    <?= ucfirst(htmlspecialchars($app['status'])) ?>
-                                </td>
-                                <td><?= htmlspecialchars($app['reqested_date']) ?></td>
-                                <td> <?= !empty($app['response_date']) ? htmlspecialchars($app['response_date']) : 'N/A' ?> </td>
-                                <td class="text-center">
-                                    <?php if ($app['status'] == 'pending'): ?>
-
-                                        <form action="leaveApplicationForm.php" method="post" style="display:inline;">
-                                            <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
-                                            <button type="submit" class="btn btn-sm btn-outline-primary me-2">
-                                                <i class="bi bi-pencil-square"></i> Edit
-                                            </button>
-                                        </form>
-                                        <form action="deleteApp.php" method="post" style="display:inline;">
-                                            <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this application?');">
-                                                <i class="bi bi-trash3"></i> Delete
-                                            </button>
-                                        </form>
-                                    <?php else: ?>
-                                        <span class="text-muted">No actions</span>
-                                    <?php endif; ?>
-                                </td>
+                                <!-- <th>Application ID</th> -->
+                                <th>Leave Type</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Days</th>
+                                <th>Status</th>
+                                <th>Requested Date</th>
+                                <th>Response Date</th>
+                                <th>Action</th>
 
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            <?php else: ?>
-                <p class="text-muted">No leave applications found.</p>
-            <?php endif; ?>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($application as $app): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars(ucfirst(str_replace('_', ' ', $app['leave_type_id']))) ?></td>
+                                    <td><?= htmlspecialchars(formatDate($app['leave_start_date'])) ?></td>
+                                    <td><?= htmlspecialchars(formatDate($app['leave_end_date'])) ?></td>
+                                    <td class="days"><?= $app['days'] ?> day<?= $app['days'] != 1 ? 's' : '' ?></td>
 
+                                    <td>
+                                        <span class="badge status-<?= $app['status'] ?>">
+                                            <?= ucfirst(htmlspecialchars($app['status'])) ?>
+                                        </span>
+                                    </td>
+
+
+                                    <td><?= htmlspecialchars($app['reqested_date']) ?></td>
+                                    <td> <?= !empty($app['response_date']) ? htmlspecialchars($app['response_date']) : 'N/A' ?> </td>
+                                    <td class="text-center">
+                                        <?php if ($app['status'] == 'pending'): ?>
+
+                                            <form action="leaveApplicationForm.php" method="post" style="display:inline;">
+                                                <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
+                                                <button type="submit" class="text-button edit">
+                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                </button>
+                                            </form>
+                                            <form action="deleteApp.php" method="post" style="display:inline;">
+                                                <input type="hidden" name="application_id" value="<?= $app['application_id'] ?>">
+                                                <button type="submit" class="text-button delete" onclick="return confirm('Are you sure you want to delete this application?');">
+                                                    <i class="bi bi-trash3"></i> Delete
+                                                </button>
+                                            </form>
+                                        <?php else: ?>
+                                            <span class="text-muted">No actions</span>
+                                        <?php endif; ?>
+                                    </td>
+
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p class="text-muted">No leave applications found.</p>
+                <?php endif; ?>
+
+
+            </div>
 
         </div>
+    </div>
 </body>
 
 </html>

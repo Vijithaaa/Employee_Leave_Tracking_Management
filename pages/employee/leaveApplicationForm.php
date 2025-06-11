@@ -14,7 +14,7 @@ if (!isset($_SESSION['emp_logged_in']) || $_SESSION['emp_logged_in'] !== true) {
 
 $empName = $_SESSION['empName'];
 $empId = $_SESSION['empId'];
-    $empImage = $_SESSION['empImage'];
+$empImage = $_SESSION['empImage'];
 
 
 $leaveType = $leaveTypesobj->getAllLeaveTypes();
@@ -27,7 +27,7 @@ $errorMsg = '';
 $successMsg = '';
 
 // If it's edit mode: load existing data
-if ($application_id !==null) {
+if ($application_id !== null) {
     $SelectLeaveFormData = $LeaveAppObj->SelectLeaveFormData($empId, $application_id);
     if ($SelectLeaveFormData) {
         $leave_type_id = $SelectLeaveFormData['leave_type_id'];
@@ -69,9 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && (isset($_POST['submit_form']) || is
             }
         }
     }
-
-    
-    
 }
 $navbarExtraContent = "<span class='me-3 text-primary'>" . ($application_id ? 'Edit Application' : 'Leave Application') . "</span>";
 // $navbarExtraContent = "<span class='me-3 text-primary'>" . 'leave Application' . "</span>";
@@ -88,17 +85,28 @@ include '../navbar.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../../asset/css/style.css">
+    <link rel="stylesheet" href="../../asset/css/leaveform.css">
+    <style>
+        .blank {
+            background-color: transparent;
+            height: 55px;
+        }
+    </style>
+
 </head>
 
 <body>
-    <div class="container">
+    <div class="blank"></div>
+
+    <div class="container-image">
         <?php if (!empty($errorMsg)): ?>
             <div class="error"><?= $errorMsg ?></div>
         <?php endif; ?>
         <?php if (!empty($successMsg)): ?>
             <div class="success"><?= $successMsg ?></div>
         <?php endif; ?>
-
+        
+        <div class="image-side"></div>
 
         <div class="leaveform">
             <form method="post" onsubmit="return confirm('Are you sure you want to <?= $application_id ? 'update' : 'submit' ?> this leave application?');">
